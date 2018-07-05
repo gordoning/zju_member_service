@@ -15,6 +15,7 @@ AV.Cloud.define('hello', function(request, response) {
  */
 AV.Cloud.define('order', (request, response) => {
   const user = request.currentUser;
+  console.log(request.params);
   if (!user) {
     return response.error(new Error('用户未登录'));
   }
@@ -25,9 +26,11 @@ AV.Cloud.define('order', (request, response) => {
   const order = new Order();
   order.tradeId = uuid().replace(/-/g, '');
   order.status = 'INIT';
+  order.name = request.params.name;
+  order.member_year = request.params.member_year;
   order.user = request.currentUser;
-  order.productDescription = 'LeanCloud-小程序支付测试';
-  order.amount = 1;
+  order.productDescription = request.params.member_year + '会员年费';
+  order.amount = request.params.amount * 100;
   order.ip = request.meta.remoteAddress;
   if (!(order.ip && /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(order.ip))) {
     order.ip = '127.0.0.1';
