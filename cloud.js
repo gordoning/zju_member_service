@@ -28,6 +28,7 @@ AV.Cloud.define('order', (request, response) => {
   order.status = 'INIT';
   order.name = request.params.name;
   order.member_year = request.params.member_year;
+  order.phone= request.params.phone;
   order.user = request.currentUser;
   order.productDescription = request.params.member_year + '会员年费';
   order.amount = request.params.amount * 100;

@@ -18,6 +18,9 @@ class Order extends AV.Object {
   get name() { return this.get('name'); }
   set name(value) { this.set('name', value); }
 
+  get phone() { return this.get('phone'); }
+  set phone(value) { this.set('phone', value); }
+
   get member_year() { return this.get('member_year'); }
   set member_year(value) { this.set('member_year', value); }
   
