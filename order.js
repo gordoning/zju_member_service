@@ -8,21 +8,36 @@ const {
 class Order extends AV.Object {
   get tradeId() { return this.get('tradeId'); }
   set tradeId(value) { this.set('tradeId', value); }
-  
+
+  get member_year() { return this.get('member_year'); }
+  set member_year(value) { this.set('member_year', value); }
+
   get amount() { return this.get('amount'); }
   set amount(value) { this.set('amount', value); }
+
+
   
   get user() { return this.get('user'); }
   set user(value) { this.set('user', value); }
 
+//  基本信息
   get name() { return this.get('name'); }
   set name(value) { this.set('name', value); }
 
   get phone() { return this.get('phone'); }
   set phone(value) { this.set('phone', value); }
 
-  get member_year() { return this.get('member_year'); }
-  set member_year(value) { this.set('member_year', value); }
+  get major() { return this.get('major'); }
+  set major(value) { this.set('major', value); }
+
+    get graduateYear() { return this.get('graduateYear'); }
+  set graduateYear(value) { this.set('graduateYear', value); }
+
+    get company() { return this.get('company'); }
+  set company(value) { this.set('company', value); }
+
+    get homeAddress() { return this.get('homeAddress'); }
+  set homeAddress(value) { this.set('homeAddress', value); }
   
   get productDescription() { return this.get('productDescription'); }
   set productDescription(value) { this.set('productDescription', value); }
@@ -48,7 +63,7 @@ class Order extends AV.Object {
         openid: this.user.get('authData').lc_weapp.openid,
         body: this.productDescription,
         out_trade_no: this.tradeId,
-        total_fee: this.amount,
+        total_fee: this.amount*100,
         spbill_create_ip: this.ip,
         notify_url: process.env.WEIXIN_NOTIFY_URL,
         trade_type: this.tradeType,
